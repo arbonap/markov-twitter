@@ -69,9 +69,9 @@ def make_text(chains):
         key = (key[1], word)
 
     if len(sentence) > 140:
-        new_tweet = sentence[:140]
+        sentence = sentence[:140]
 
-    return new_tweet
+    return sentence
 
 
 def tweet(chains):
