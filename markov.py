@@ -56,7 +56,7 @@ def make_text(chains):
     # words = [key[0], key[1]]
     sentence = key[0] + " " + key[1]
 
-    while key in chains and len(sentence) <= 140:
+    while key in chains and len(sentence) <= 140: #the other way to limit the 140 char, is to slice the text before tweeting out.
         # Keep looping until we have a key that isn't in the chains
         # (which would mean it was the end of our original text)
         #
@@ -68,8 +68,10 @@ def make_text(chains):
         # words.append(word)
         key = (key[1], word)
 
+    if len(sentence) > 140:
+        new_tweet = sentence[:140]
 
-    return sentence
+    return new_tweet
 
 
 def tweet(chains):
@@ -94,5 +96,6 @@ chains = make_chains(text)
 
 # Generate text as tweet
 new_tweet = make_text(chains)
+
 # Your task is to write a new function tweet, that will take chains as input
 tweet(new_tweet)
