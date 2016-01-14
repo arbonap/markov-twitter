@@ -84,6 +84,13 @@ def tweet(chains):
     # to make sure these environmental variables are set.
     # pass
 
+def read_most_recent_tweet(user_id):
+
+    statuses = api.GetUserTimeline(user_id)
+    print "The most recent tweet: ", statuses[0].text
+
+# return ()
+
 # Get the filenames from the user through a command line prompt, ex:
 # python markov.py green-eggs.txt shakespeare.txt
 filenames = sys.argv[1:]
@@ -96,6 +103,9 @@ chains = make_chains(text)
 
 # Generate text as tweet
 new_tweet = make_text(chains)
+
+# Print the most recent tweet
+read_most_recent_tweet("Pat")
 
 # Your task is to write a new function tweet, that will take chains as input
 tweet(new_tweet)
